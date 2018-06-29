@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('welcome',['name' => '花花']);
+    return view('welcome');
 });
