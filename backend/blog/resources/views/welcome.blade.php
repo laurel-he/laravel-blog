@@ -1,95 +1,292 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="baidu-site-verification" content="vTLMT2DocA" />
+    <title>{$Think.lang.title}</title>
+    <!-- 引入ico图标并且设置书签栏 -->
+    <link rel="shortcut icon"  href="__PUBLIC__/images/favicon.ico" />
+    <link rel="Bookmark" href="__PUBLIC__/images/fivicon.ico" />
+    <link href="__PUBLIC__/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="__PUBLIC__/css/style.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="__PUBLIC__/css/lightbox.css">
 
-        <title>Laravel</title>
+    <!-- jQuery -->
+    <script type='text/javascript' src="__PUBLIC__/js/jquery-1.11.1.min.js"></script>
+    <!--分享当前页面到qq空间-->
+    <script type='text/javascript' src="__PUBLIC__/js/share.js"></script>
+    <!--引入css文件 -->
+    <link href='__PUBLIC__/css/family.css' rel='stylesheet' type='text/css'>
+    <!-- Custom Theme files -->
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Blog,learn,PHP,website,ThinkPHP" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+</head>
+<body>
+<!-- header -->
+<div class="banner">
+    <div class="container">
+        <div class="headr-right">
+            <div class="details">
+                <ul>
+                    <li><a href="mailto:1570306409@qq.com"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>1570306409@qq.com</a></li>
+                    <li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>(+86)157 0847 3034</li>
+                </ul>
             </div>
         </div>
-    </body>
+        <div class="banner_head_top">
+            <div class="logo">
+                <h1><a href="{$indexUrl}"><span>{$Think.lang.name}</span></a></h1>
+            </div>
+            <div class="top-menu">
+                <div class="content white">
+                    <nav class="navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <!--/navbar header-->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="{$indexUrl}">{$Think.lang.index}</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="scroll dropdown-toggle" data-toggle="dropdown">{$Think.lang.reviews}<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{$reviewUrl}">{$Think.lang.review_1}</a></li>
+                                        <li><a href="{$galleryUrl}">{$Think.lang.review_2}</a></li>
+
+                                    </ul>
+                                </li>
+                                <if condition="cookie('user_name') eq 'admin'">
+                                    <li><a href="{:U('Blog/add')}">{$Think.lang.review_3}</a></li>
+                                    <else />
+                                    <li><a href="{$galleryUrl}">{$Think.lang.gallery}</a></li>
+                                </if>
+                                <if condition="cookie('user_name') eq ''">
+                                    <li><a href="{$signUrl}">{$Think.lang.sign}</a></li>
+                                </if>
+                                <li><a href="{:U('Sign/logout')}">{$Think.lang.logout}</a></li>
+                            </ul>
+                        </div>
+                        <!--/navbar collapse-->
+                    </nav>
+                    <!--/navbar-->
+                </div>
+                <div class="clearfix"></div>
+                <script type="text/javascript" src="__PUBLIC__/js/bootstrap-3.1.1.min.js"></script>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="banner-info">
+            <h3>{$Think.lang.theme}</h3>
+            <h2><!-- {$Think.lang.theme} -->{$login}</h2>
+        </div>
+        <div class="social">
+            <ul>
+                <li><a href="#" id="zone" onclick="share()"><span class="fa" > </span></a></li>
+                <li><a href="http://i4.buimg.com/588926/348a06a5b870c0cd.jpg"><span class="tw"> </span></a></li>
+                <li><a href="http://weibo.com/3783884100"><span class="g"> </span></a></li>
+
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!---->
+<div class="welcome">
+    <div class="container">
+        <div class="welcome-info">
+            <h3>{$Think.lang.title}</h3>
+        </div>
+    </div>
+</div>
+<!---->
+<div class="content">
+    <div class="container">
+        <div class="col-md-8 content-left">
+            <div class="information">
+                <h4>{$Think.lang.title_1}</h4>
+                <div class="information_grids">
+                    <div class="info">
+                        <p>{$Think.lang.motto}</p>
+                    </div>
+                    <div class="info-pic">
+                        <img src="__PUBLIC__/images/ps.png" class="img-responsive" alt=""/>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+            <div class="games-grids">
+                <div class="game-grid-left">
+                    <volist name="content" id="cont" offset="0" length="1">
+                        <div class="grid1">
+                            <h5 class="act"><a href="{:U('Single/single',array('id'=>1))}">{$cont.blog_group}</a></h5>
+
+                            <img src="{$cont.blog_images}" class="img-responsive" alt=""/>
+                            <div class="grid1-info">
+                                <h4><a href="{:U('Single/single',array('id'=>1))}">{$cont['blog_name']}</a></h4>
+                                <p>{$cont[blog_content]|msubstr=0,62}</p>
+                            </div>
+                            <div class="more">
+                                <a href="{:U('Single/single',array('id'=>1))}">{$Think.lang.read_more}</a>
+                            </div>
+                        </div>
+                    </volist>
+                    <volist name="content" id="cont2" offset="1" length="1">
+                        <div class="grid2">
+                            <h5 class="race"><a href="{:U('Single/single',array('id'=>2))}">{$cont2['blog_group']}</a></h5>
+                            <img src="{$cont2['blog_images']}" class="img-responsive" alt=""/>
+                            <div class="grid1-info">
+                                <h4><a href="{:U('Single/single',array('id'=>2))}">{$cont2.blog_name}</a></h4>
+                                <p>{$cont2[blog_content]|substr=0,62}</p>
+                            </div>
+                            <div class="more">
+                                <a href="{:U('Single/single',array('id'=>2))}">{$Think.lang.read_more}</a>
+                            </div>
+                        </div>
+                </div>
+                </volist>
+                <div class="game-grid-right">
+                    <volist name="content" id="cont3" offset="2" length="1">
+                        <div class="grid3">
+                            <h5 class="sport"><a href="{:U('Single/single',array('id'=>3))}">{$cont3['blog_group']}</a></h5>
+                            <img src="{$cont3.blog_images}" class="img-responsive" alt=""/>
+                            <div class="grid1-info">
+                                <h4><a href="{:U('Single/single',array('id'=>3))}">{$cont3.blog_name}</a></h4>
+                                <p>{$cont3.blog_content|substr=0,64}</p>
+                            </div>
+                            <div class="more">
+                                <a href="{:U('Single/single',array('id'=>3))}">{$Think.lang.read_more}</a>
+                            </div>
+                        </div>
+                    </volist>
+                    <volist name="content" id="cont4" offset="3" length="1">
+                        <div class="grid4">
+                            <h5 class="arc"><a href="{:U('Single/single',array('id'=>4))}">{$cont4['blog_group']}</a></h5>
+                            <img src="{$cont4.blog_images}" class="img-responsive" alt=""/>
+                            <div class="grid1-info">
+                                <h4><a href="{:U('Single/single',array('id'=>4))}">{$cont4.blog_name}</a></h4>
+                                <p>{$cont4.blog_content|substr=0,64}</p>
+                            </div>
+                            <div class="more">
+                                <a href="{:U('Single/single',array('id'=>4))}">{$Think.lang.read_more}</a>
+                            </div>
+                        </div>
+                    </volist>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+        <div class="col-md-4 content-right">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs nav2" role="tablist">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">{$Think.lang.trending}</a></li>
+                <li role="presentation" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{$Think.lang.recent_posts}</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active re-pad2" id="home">
+                    <volist name='hot_rank' id='hot'>
+                        <div class="game1">
+                            <div class="col-md-3 tab-pic">
+                                <a href="{:U('Single/single',array('id'=>$hot['blog_id']))}"><img src="{$hot.blog_images}" alt="/" class="img-responsive"></a>
+                            </div>
+                            <div class="col-md-9 tab-pic-info">
+                                <h4><a href="{:U('Single/single',array('id'=>$hot['blog_id']))}">{$hot.blog_name}</a></h4>
+                                <p>{$hot.blog_content|substr=0,30}</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </volist>
+                </div>
+                <div role="tabpanel" class="tab-pane re-pad2" id="profile">
+
+                    <volist name="time_rank" id="time">
+                        <div class="game-post">
+                            <div class="col-md-3 tab-pic">
+                                <a href="{:U('Single/single',array('id'=>$time['blog_id']))}"><img src="{$time.blog_images}" alt="/" class="img-responsive"></a>
+                            </div>
+                            <div class="col-md-9 tab-post-info">
+                                <h4><a href="{:U('Single/single',array('id'=>$time['blog_id']))}">{$time.blog_name}</a></h4>
+                                <p>Posted By <a href="#">{$time.blog_author}</a> &nbsp;&nbsp; on {$time.blog_time|strtotime|date='Y-m-d H:i:s',###} &nbsp;&nbsp; <a href="#">Comments (10)</a></p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </volist>
+                </div>
+            </div>
+            <!---->
+            <div class="category blog-ctgry">
+                <h4>{$Think.lang.rank}</h4>
+                <div class="list-group">
+                    <volist name="rank" id="rank_list">
+                        <a href="#" class="list-group-item">{$rank_list[user_name]}</a>
+                        <a href="#" class="list-group-item">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--------{$rank_list[vip]}级会员
+                        </a>
+                    </volist>
+                </div>
+            </div>
+            <div class="photo-gallery">
+                <h4>{$Think.lang.gallery}</h4>
+                <div class="gallery-1">
+                    <div class="col-md-4 gallery-grid-pic">
+                        <a class="example-image-link" href="__PUBLIC__/images/p2.jpg" data-lightbox="example-set"><img class="example-image" src="__PUBLIC__/images/p2.jpg" alt=""/></a>
+                    </div>
+                    <div class="col-md-4 gallery-grid-pic">
+                        <a class="example-image-link" href="__PUBLIC__/images/p1.jpg" data-lightbox="example-set"><img class="example-image" src="__PUBLIC__/images/p1.jpg" alt=""/></a>
+                    </div>
+                    <div class="col-md-4 gallery-grid-pic">
+                        <a class="example-image-link" href="__PUBLIC__/images/p3.jpg" data-lightbox="example-set"><img class="example-image" src="__PUBLIC__/images/p3.jpg" alt=""/></a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="gallery-1">
+                    <div class="col-md-4 gallery-grid-pic">
+                        <a class="example-image-link" href="__PUBLIC__/images/p4.jpg" data-lightbox="example-set"><img class="example-image" src="__PUBLIC__/images/p4.jpg" alt=""/></a>
+                    </div>
+                    <div class="col-md-4 gallery-grid-pic">
+                        <a class="example-image-link" href="__PUBLIC__/images/p5.jpg" data-lightbox="example-set"><img class="example-image" src="__PUBLIC__/images/p5.jpg" alt=""/></a>
+                    </div>
+                    <div class="col-md-4 gallery-grid-pic">
+                        <a class="example-image-link" href="__PUBLIC__/images/p6.jpg" data-lightbox="example-set"><img class="example-image" src="__PUBLIC__/images/p6.jpg" alt=""/></a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="gallery-1">
+                    <div class="col-md-4 gallery-grid-pic">
+                        <a class="example-image-link" href="__PUBLIC__/images/p1.jpg" data-lightbox="example-set"><img class="example-image" src="__PUBLIC__/images/p1.jpg" alt=""/></a>
+                    </div>
+                    <div class="col-md-4 gallery-grid-pic">
+                        <a class="example-image-link" href="__PUBLIC__/images/p3.jpg" data-lightbox="example-set"><img class="example-image" src="__PUBLIC__/images/p3.jpg" alt=""/></a>
+                    </div>
+                    <div class="col-md-4 gallery-grid-pic">
+                        <a class="example-image-link" href="__PUBLIC__/images/p4.jpg" data-lightbox="example-set"><img class="example-image" src="__PUBLIC__/images/p4.jpg" alt=""/></a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+
+<script src="__PUBLIC__/js/lightbox-plus-jquery.min.js"></script>
+
+<!--引入footer-->
+<include file="./Application/Home/Common/footer.html" />
+
+</body>
 </html>
