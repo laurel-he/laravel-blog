@@ -37,6 +37,7 @@
                     <li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>(+86)157 0847 3034</li>
                 </ul>
             </div>
+
         </div>
         <div class="banner_head_top">
             <div class="logo">
